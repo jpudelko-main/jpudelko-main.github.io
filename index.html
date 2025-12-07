@@ -9,7 +9,6 @@
 
   <style>
     :root{
-      /* paleta motywu – zmień kolory, by spersonalizować */
       --bg:#0b1220; --card:#121a2b; --muted:#9fb0d9; --text:#e6edff; --accent:#7cc0ff; --accent-2:#94f7c5;
     }
     *{box-sizing:border-box}
@@ -20,11 +19,26 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      position:relative; /* dla przycisku języka w rogu */
+    }
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#001226;font-weight:700}
     nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:#1a2540;color:var(--text);border:1px solid #223055;cursor:pointer}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#1a2540;
+      color:var(--text);
+      border:1px solid #223055;
+      cursor:pointer;
+    }
     .btn:hover{background:#1f2d52}
     .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001226;border:none}
     .muted{color:var(--muted)}
@@ -43,12 +57,19 @@
     .pdfbox{height:70vh;border:1px solid #24345e;border-radius:12px;overflow:hidden}
     .note{font-size:13px;color:#a8b6dc}
 
-    /* AVATAR – zdjęcie w lewym górnym rogu */
     .avatar{
       width:56px; height:56px;
       border-radius:12px;
       object-fit:cover; display:block;
       border:1px solid #223055;
+    }
+
+    /* przycisk zmiany języka w prawym górnym rogu */
+    #lang-toggle{
+      position:absolute;
+      top:8px;
+      right:24px;
+      font-family:Consolas, "SFMono-Regular", "Liberation Mono", Menlo, Monaco, ui-monospace, monospace;
     }
   </style>
 </head>
@@ -62,15 +83,18 @@
           <span class="muted" id="subtitle">Junior Bioinformatics • NGS • Python</span>
         </div>
       </div>
+
       <nav>
         <a class="btn" href="#projects" id="nav-projects">Projekty</a>
         <a class="btn" href="#skills" id="nav-skills">Umiejętności</a>
         <a class="btn" href="#about" id="nav-about">O mnie</a>
         <a class="btn" href="#thesis" id="nav-thesis">Praca licencjacka</a>
         <a class="btn" href="#contact" id="nav-contact">Kontakt</a>
-        <button class="btn" id="lang-toggle" type="button">EN</button>
         <a class="btn primary" href="cv_ngs.pdf" download id="nav-cv">📄 Pobierz CV</a>
       </nav>
+
+      <!-- przycisk zmiany języka -->
+      <button class="btn" id="lang-toggle" type="button">EN</button>
     </header>
 
     <section class="hero">
@@ -206,7 +230,6 @@
     </footer>
   </div>
 
-  <!-- wstawia bieżący rok do stopki -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -396,7 +419,6 @@
       langToggle.textContent = currentLang === "pl" ? "EN" : "PL";
     });
 
-    // startowo PL (żeby wszystko było spójne z obiektem tłumaczeń)
     applyTranslations("pl");
   </script>
 </body>
