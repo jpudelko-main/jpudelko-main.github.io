@@ -368,6 +368,11 @@
       document.getElementById("nav-thesis").textContent = t.navThesis;
       document.getElementById("nav-contact").textContent = t.navContact;
       document.getElementById("nav-cv").textContent = t.navCv;
+      // TU przełączamy plik CV:
+      document.getElementById("nav-cv").setAttribute(
+        "href",
+        lang === "pl" ? "cv_ngs.pdf" : "cv_ngs_eng.pdf"
+      );
 
       document.getElementById("hero-title").textContent = t.heroTitle;
       document.getElementById("hero-sub").textContent = t.heroSub;
